@@ -22,7 +22,9 @@ const loadScript = (url) => {
 };
 
 const locationHandler = async () => {
-  const location = window.location.hash.replace("#", "") || "/";
+  const location = window.location.hash.replace("#", "");
+
+  if (!location) return;
 
   const route = routes[location] || routes[404];
 
@@ -30,14 +32,34 @@ const locationHandler = async () => {
   document.getElementById("content").innerHTML = html;
   document.title = pageTitle;
 
+  // Always hide static sections when routing
+  const section1 = document.getElementById("section--1");
+  const section2 = document.getElementById("section--2");
+
+  if (location === 'workshop') {
+    section1.classList.remove("hidden");
+    if (section2) section2.classList.add("hidden");
+  }
+  else if (location === 'save') {
+    if (section1) section1.classList.add("hidden");
+    if (section2) section2.classList.add("hidden");
+  }
+  else{
+    section1.classList.remove("hidden");
+    section2.classList.remove("hidden");
+  }
+
+  // Scroll to top on route change
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
   if (location === 'workshop') {
     initializeEditor();
-
   } else if (location === 'forum') {
     await loadScript('forum.js');
     initializeForum();
   }
 };
+
 
 window.addEventListener("hashchange", locationHandler);
 locationHandler();
@@ -70,7 +92,7 @@ function initializeEditor() {
   const fontSizePicker = document.querySelector("#fontSizePicker");
   const nameWritingType = document.querySelector(".name-writing-type");
 
-  const writingType = localStorage.getItem('selectedWritingType');
+  const writingType = localStorage.getItem('currentWritingType');
   if (writingType) {
     nameWritingType.textContent = writingType;
   }

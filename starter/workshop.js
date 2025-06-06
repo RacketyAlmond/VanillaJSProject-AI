@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const fontSizePicker = document.querySelector("#fontSizePicker");
   const nameWritingType = document.querySelector(".name-writing-type");
 
-  const savedWritingType = localStorage.getItem("selectedWritingType");
+  const savedWritingType = localStorage.getItem("currentWritingType");
   if (savedWritingType) {
     nameWritingType.textContent = savedWritingType;
   } else {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   textArea.addEventListener('click', function () {
-    if (textArea.textContent.length < 21) {
+    if (textArea.textContent.length < 17) {
       textArea.textContent = "";
       textArea.removeAttribute("style");
     }
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const fontSizePicker = document.querySelector("#fontSizePicker");
     const nameWritingType = document.querySelector(".name-writing-type");
 
-    const savedWritingType = localStorage.getItem("selectedWritingType");
+    const savedWritingType = localStorage.getItem("currentWritingType");
     if (savedWritingType) {
       nameWritingType.textContent = savedWritingType;
     } else {
