@@ -7,7 +7,7 @@ const routes = {
   section_2: "empty.html",
   write: "write/write.html",
   workshop: "workshop.html",
-  saved: "saved/saved.html",
+  saved: "saved.html",
   howWrite: "how_to_write/how_to_write.html"
 };
 
@@ -54,7 +54,7 @@ const locationHandler = async () => {
   } else if (location === 'saved') {
     if (section1) section1.classList.add("hidden");
     if (section2) section2.classList.add("hidden");
-    await loadScript('saved/saved.js');
+    await loadScript('saved.js');
     initializeForum();
   }
 };
