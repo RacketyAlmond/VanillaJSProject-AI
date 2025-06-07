@@ -16,7 +16,7 @@ Key Features:
 
 ## Demo Video
 
-[Watch the project in action](https://github.com/user-attachments/assets/706aadaa-11b0-4432-8d11-f5f0cfb7246b)
+[Watch the project in action](https://github.com/user-attachments/assets/46d706d3-cb0d-460b-8f37-ddc1abe8386b)
 
 
 ## Usage
