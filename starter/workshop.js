@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (savedWritingType) {
     nameWritingType.textContent = savedWritingType;
   } else {
-    nameWritingType.textContent = "E-mail"; // Default to E-mail if no type is saved
+    nameWritingType.textContent = "E-mail";
   }
 
   textArea.addEventListener('click', function () {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (savedWritingType) {
       nameWritingType.textContent = savedWritingType;
     } else {
-      nameWritingType.textContent = "E-mail"; // Default to E-mail if no type is saved
+      nameWritingType.textContent = "E-mail";
     }
   }
   toolbar.querySelectorAll(".format-button").forEach((button) => {
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function checkEssay(content) {
-    const textContent = content.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
+    const textContent = content.replace(/<\/?[^>]+(>|$)/g, "");
     const response = await fetch('http://localhost:8080/api/essays/correct', {
       method: 'POST',
       headers: {

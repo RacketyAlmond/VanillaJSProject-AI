@@ -7,7 +7,7 @@ const routes = {
   section_2: "empty.html",
   write: "write/write.html",
   workshop: "workshop.html",
-  forum: "forum.html",
+  saved: "saved/saved.html",
   howWrite: "how_to_write/how_to_write.html"
 };
 
@@ -32,7 +32,6 @@ const locationHandler = async () => {
   document.getElementById("content").innerHTML = html;
   document.title = pageTitle;
 
-  // Always hide static sections when routing
   const section1 = document.getElementById("section--1");
   const section2 = document.getElementById("section--2");
 
@@ -49,13 +48,13 @@ const locationHandler = async () => {
     section2.classList.remove("hidden");
   }
 
-  // Scroll to top on route change
-  window.scrollTo({ top: 0, behavior: "smooth" });
 
   if (location === 'workshop') {
     initializeEditor();
-  } else if (location === 'forum') {
-    await loadScript('forum.js');
+  } else if (location === 'saved') {
+    if (section1) section1.classList.add("hidden");
+    if (section2) section2.classList.add("hidden");
+    await loadScript('saved/saved.js');
     initializeForum();
   }
 };
@@ -108,7 +107,7 @@ function initializeEditor() {
     nameWritingType.textContent = currentWritingType;
     localStorage.removeItem("currentWritingType");
   } else {
-    nameWritingType.textContent = "Email"; // Default to "Email"
+    nameWritingType.textContent = "Email";
   }
 
   textArea.addEventListener('click', function () {
@@ -188,7 +187,7 @@ function initializeEditor() {
   }
 
   async function checkEssay(content) {
-    const textContent = content.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
+    const textContent = content.replace(/<\/?[^>]+(>|$)/g, "");
     const response = await fetch('http://localhost:8080/api/essays/correct', {
       method: 'POST',
       headers: {

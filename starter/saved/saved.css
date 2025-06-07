@@ -1,0 +1,227 @@
+/* General styles */
+.header__title,
+.section {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    text-decoration: none;
+    text-underline: none;
+}
+
+/* Header styles */
+header h1 {
+    margin-top: 100px;
+    text-align: center;
+    color: #333;
+}
+
+/* Control styles */
+.controls {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search-bar {
+    padding: 10px;
+    font-size: 16px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.sort-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.sort-buttons button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #39b385;
+    color: #fff;
+    text-decoration: none;
+    text-underline: none;
+}
+
+.sort-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Main content styles */
+#saved-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* New grid layout styles */
+#saved-list.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.card button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.card .writing-type {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.popup-button:last-child {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* List styles */
+#saved-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#saved-list li {
+    margin: 10px 0;
+    padding: 10px;
+    background: #e8e8e8;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#saved-list li .essay-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#saved-list li .writing-type {
+    font-style: italic;
+    color: #555;
+    margin-top: 5px;
+}
+
+#saved-list li button {
+    background: none;
+    border: none;
+    color: #333;
+    font: inherit;
+    cursor: pointer;
+}
+
+#saved-list li button:hover {
+    color: #007BFF;
+}
+
+/* Modal styles */
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    position: relative;
+    max-height: 90vh; /* Limit the max height */
+    overflow-y: auto; /* Allow scrolling if content is too long */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content pre {
+    white-space: pre-wrap;
+}
+
+/* Popup content styles */
+.popup-content {
+    font-size: 18px; /* Adjusted for larger text */
+    white-space: pre-wrap;
+    margin-top: 20px;
+}
+
+.popup-writing-type {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.popup-button {
+    background-color: #5ec576;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px; /* Add margin between buttons */
+}
+
+.popup-button:hover {
+    background-color: #0056b3;
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #5ec576;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1001;
+}

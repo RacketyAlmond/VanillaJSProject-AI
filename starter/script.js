@@ -10,7 +10,6 @@ document.querySelectorAll(".writing-link").forEach(link => {
         const writingType = this.getAttribute("data-type");
         localStorage.setItem("currentWritingType", writingType);
 
-        // Scroll to top of page
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -18,15 +17,18 @@ document.querySelectorAll(".writing-link").forEach(link => {
     });
 });
 
-function toggleOptions() {
-    const menu = document.getElementById('writingOptions');
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-}
 
-function selectWriting(page) {
+function selectWriting(filename) {
+    const label = getLabelFromFilename(filename);
+
+    const selectedButton = document.querySelector('.selectedOption');
+    if (selectedButton) {
+        selectedButton.textContent = label + ' ▸';
+    }
+
     const formContent = document.getElementById('formContent');
 
-    fetch(`how_to_write/${page}`)
+    fetch(`how_to_write/${filename}`)
         .then(response => {
             if (!response.ok) throw new Error('Network response was not ok');
             return response.text();
@@ -38,6 +40,23 @@ function selectWriting(page) {
             formContent.innerHTML = `<p>Content not found for "${page}".</p>`;
             console.error('Error loading content:', error);
         });
+    document.getElementById("writingOptions").style.display = 'none';
+}
+
+
+
+function getLabelFromFilename(filename) {
+    const name = filename.split('.')[0];
+    return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+function toggleOptions() {
+    const options = document.getElementById("writingOptions");
+    if (options.style.display === 'block') {
+        options.style.display = 'none';
+    } else {
+        options.style.display = 'block';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,4 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdown.style.display = 'none';
         }
     });
+});
+
+document.querySelector("#essayType").addEventListener("click", () => {
+    setBackgroundColor("this?element");
 });

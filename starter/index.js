@@ -8,7 +8,7 @@ function loadForum() {
     .then(html => {
       document.getElementById('content').innerHTML = html;
       const script = document.createElement('script');
-      script.src = 'forum.js';
+      script.src = 'saved.js';
       document.body.appendChild(script);
 
 
